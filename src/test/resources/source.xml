@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+  <records>
+    <item count="1"/>
+    <item count="7"/>
+    <item count="8"/>
+    <item count="9"/>
+    <notItem count="8"/>
+    <Item count="9"/>
+    <item/>
+    <item>
+      <item count="9" />
+    </item>
+  </records>
+</root>
