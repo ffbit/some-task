@@ -19,4 +19,10 @@ public class ArgumentException extends RuntimeException {
         super(cause);
     }
 
+    @Override
+    public String getMessage() {
+        return super.getMessage() + "\n"
+                + "For usage information see here - https://github.com/ffbit/yandex-task";
+    }
+
 }
