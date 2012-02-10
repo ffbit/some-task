@@ -17,10 +17,10 @@ Sample XML:
 
     <root>
         <records>
-        <item count="8"/>
-        <item count="4"/>
-        <notItem count="12"/>
-        <item count="11"/>
+            <item count="8"/>
+            <item count="4"/>
+            <notItem count="12"/>
+            <item count="11"/>
         </records>
     </root>
 
