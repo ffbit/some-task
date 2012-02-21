@@ -48,5 +48,4 @@ Usage
         --db-user user              \
         --db-password pass
 
-Yandex, thank you for the great test task.
-------------------------------------------
+
