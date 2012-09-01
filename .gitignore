@@ -3,3 +3,4 @@
 .classpath
 build
 target
+*DS_Storage
