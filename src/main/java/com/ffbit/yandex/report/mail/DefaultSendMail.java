@@ -1,5 +1,6 @@
 package com.ffbit.yandex.report.mail;
 
+import java.io.IOException;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -12,29 +13,38 @@ public class DefaultSendMail implements SendMail {
     private Properties properties;
     private String user;
     private String pass;
-    
-    DefaultSendMail(Properties properties, String user, String pass) {
-        this.properties = new Properties(properties);
-        this.user = user;
-        this.pass = pass;
+
+    DefaultSendMail() {
+        initProperties();
+
+        this.user = properties.getProperty("mail.username");
+        this.pass = properties.getProperty("mail.password");
     }
-    
-    public static SendMail newInstace() {
-        return new HardCodedGmailSMPTSendMail();
+
+    private void initProperties() {
+        properties = new Properties();
+
+        try {
+            properties.load(DefaultSendMail.class.getClassLoader()
+                    .getResourceAsStream("java.mail.properties"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void send(String to, String subject, String text) {
         Session session = Session.getDefaultInstance(properties, null);
-        
+
         // TODO: Should be refactored.
         try {
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+            message.addRecipient(Message.RecipientType.TO,
+                    new InternetAddress(to));
             message.setSubject(subject);
             message.setText("Quantity: " + text);
-            
+
             Transport transport = session.getTransport();
             transport.connect(user, pass);
             transport.sendMessage(message, message.getAllRecipients());
@@ -43,5 +53,5 @@ public class DefaultSendMail implements SendMail {
             throw new MailReporterException(e.getMessage());
         }
     }
-    
+
 }
