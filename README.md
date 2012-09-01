@@ -34,6 +34,15 @@ MySQL requirements:
         `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
     );
 
+Java Mail API requirements:
+---------------------------
+Adjust Java Mail API configuration by
+
+    cp src/main/resources/java.mail.properties_template src/main/resources/java.mail.properties
+
+and set required properties.
+
+
 Usage
 -----
 
